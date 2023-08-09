@@ -1,0 +1,71 @@
+<html>
+	<head>
+	<title> What Next by PK </title>
+	<style>
+		* { font-size:60px; }
+		body { background-color:azure; }
+	</style>
+	<script>
+		function find()
+		{
+			event.preventDefault();
+			let name = document.getElementById("name");
+			let job = document.getElementById("job");
+			let ms = document.getElementById("ms");
+			let mba = document.getElementById("mba");
+			let ans = document.getElementById("ans"); 
+
+			if (name.value == "")
+				{
+					alert("Name cannot be Empty");
+					ans.innerHTML = "";
+					name.focus();
+					return;
+				}
+				else if (name.value.trim() == "")
+				{
+					alert("Name cannot be only spaces");
+					name.value = "";
+					ans.innerHTML = "";
+					name.focus();
+					return;
+				}
+				else if (! name.value.match(/^[A-Za-z ]+$/))
+				{
+					alert("Name should only contain Alphabets");
+					name.value = "";
+					ans.innerHTML = "";
+					name.focus();
+					return;
+				}
+			
+			let choice = "";
+			if (job.checked)		choice = "JOB";
+			else if (ms.checked)		choice = "MS";
+			else				choice = "MBA";
+
+			let msg = "Name: " + name.value + " and Choice: " + choice;
+			ans.innerHTML = msg;
+		}
+	</script>
+	</head>
+
+	<body>
+		<center>
+			<h1> What Next ?? </h1>
+			<form onsubmit = "find()">
+
+			<input type = "text" step = "any" placeholder = "Enter your Name" id = "name" />
+			<br><br>
+			<input type = "radio" name = "c" id = "job" checked = "true" /> JOB
+			<input type = "radio" name = "c" id = "ms" /> MS
+			<input type = "radio" name = "c" id = "mba" /> MBA
+			<br><br>
+
+			<input type = "submit" />
+			</form>
+
+			<h2 id = "ans"> </h2> 
+		</center>
+	</body>
+</html>
